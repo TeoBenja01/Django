@@ -1,5 +1,5 @@
 {% extends 'paginas_base/base.html' %}
-
+<body bgcolor="black">
 {% block titulo %}Página Lista de Estudiante {% endblock titulo %}
 {% block contenido %}
     <div class="card">
@@ -7,20 +7,20 @@
             <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear' %}" role="button">Nuevo estudiante</a>
         </div>
         <div class="card-body">
-            <h4 class="card-title">Clientes</h4>
+            <h4 class="card-title" style="color:red ; font-family">Estudiantes</h4>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Ap</th>
-                        <th>Am</th>
-                        <th>Dirección</th>
-                        <th>Telefono</th>
-                        <th>Foto dni</th>
-                        <th>Foto isa</th>
-                        <th>Foto cus</th>
-                        <th>Acciones</th>
+                        <th style="color:Blue"> Id</th>
+                        <th style="color:Blue">Nombre</th>
+                        <th style="color:Blue">Ap</th>
+                        <th style="color:Blue">Am</th>
+                        <th style="color:Blue">Dirección</th>
+                        <th style="color:Blue"> Telefono</th>
+                        <th style="color:Blue">Foto dni</th>
+                        <th style="color:Blue">Foto isa</th>
+                        <th style="color:Blue">Foto cus</th>
+                        <th style="color:Blue">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +38,24 @@
                         
 
                         <td> <img src="{{ e.dni.url }}" height="60">  </td>
-                        <td> <img src="{{ e.isa.url }}" height="60">  </td>   
-                        <td><img  src="{{ e.cus.url }}" height="60">   </td>
+                
+                        <td>  
+                            {% if e.isa %}  
+                                <a href="{{ e.isa.url }}" target="_blank">Ver ISA</a>  
+                            {% else %}  
+                                No disponible  
+                            {% endif %}  
+                        </td>  
+                        <td>  
+                            {% if e.cus %}  
+                                <a href="{{ e.cus.url }}" target="_blank">Ver CUS</a>  
+                            {% else %}  
+                                No disponible  
+                            {% endif %}  
+                        </td>  
+
+
+
                         <td>
                             <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'editar' e.id %}" role="button">Editar</a>
                             <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminar' e.id %}" role="button">Eliminar</a>
@@ -57,6 +73,6 @@
         </div>
     </div>
    
-   
+</body>
 
 {% endblock contenido %}

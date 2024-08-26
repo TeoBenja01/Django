@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from  django.http import HttpResponse
 from .models import Estudiante
 from .forms  import EstudianteForm
+from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 def inicio(request):

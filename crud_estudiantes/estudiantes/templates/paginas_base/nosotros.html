@@ -1,47 +1,168 @@
 {% extends 'paginas_base/base.html' %}
-
+{% load static %}
 {% block titulo %}Página Nosotros {% endblock titulo %}
 {% block contenido %}
-    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-        <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-        <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-        </div>
+<div class="p-4 p-md-7 mb-4 text-white rounded bg-primary">
+  <div class="d-flex align-items-center">
+      <div class="col-md-6 px-0">
+          <h1 class="display-2" style="color:Yellow">Programación con Django</h1>
+          <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+          <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+      </div>
+      <div class="ms-4">
+          <img src="{% static 'img9.jpeg' %}" alt="Mi Imagen" width="250px">
+      </div>
+  </div>
+</div>
+
+    <div class="text-center">
+      <img src="{% static 'img1.jpg' %}" style="float-end" alt="Mi Imagen" width="500px">
     </div>
 
     <div class="row mb-2">
-        <div class="col-md-6">
-          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-              <strong class="d-inline-block mb-2 text-primary">World</strong>
-              <h3 class="mb-0">Featured post</h3>
-              <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="stretched-link">Continue reading</a>
-            </div>
-            <div class="col-auto d-none d-lg-block">
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+      <div class="col-md-15">
+        <!-- Resto del contenido de tu página -->
+        ...
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-15">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-md-8 p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">Formas</strong>
+                    <h3 class="mb-0" style="font-family: Arial;">Tutorial de Django</h3>
+                    <div class="mb-1 text-muted">Agosto 18</div>
+                    <p class="card-text mb-auto">En este tutorial, obtendrás una guía paso a paso sobre cómo instalar y crear un proyecto de Django. Aprenderás a crear un proyecto en el que puedas agregar, leer, actualizar o eliminar datos.</p>
+                    <a href="#" class="stretched-link">Continue reading</a>
+                </div>
+                <div class="col-md-4 d-none d-md-block">
+                  <img src="{% static 'img2.jpg' %}" alt="Imagen relacionada" class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
+              </div>
+        </div>
+    </div>
     
+            <div class="row mb-2">
+              <div class="col-md-12">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                  <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">Formas</strong>
+                    <h3 class="mb-0" "font-family:Arial">¿Cómo funciona Django?</h3>
+                    <div class="mb-1 text-muted">Agosto 12</div>
+                    <p class="card-text mb-auto">Django sigue el patrón de diseño MVT (Modelo Vista Plantilla).
+
+                      Modelo: Los datos que desea presentar, generalmente datos de una base de datos.
+                      Ver: un controlador de solicitudes que devuelve la plantilla y el contenido relevantes, según la solicitud del usuario.
+                      Plantilla: un archivo de texto (como un archivo HTML) que contiene el diseño de la página web, con lógica sobre cómo mostrar los datos.
+                      </p>
+                    <a href="#" class="stretched-link">Continue reading</a>
+                  </div>
+
+                  <div class="row mb-2">
+                    <div class="col-md-12">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-md-8 p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary">Formas</strong>
+                                <h3 class="mb-0" style="font-family:Arial;">Modelo</h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">
+                                    El modelo proporciona datos de la base de datos. En Django, los datos se entregan como un Mapeo Relacional de Objetos (ORM), que es una técnica diseñada para facilitar el trabajo con bases de datos.
+                                    La forma más común de extraer datos de una base de datos es SQL. Un problema con SQL es que es necesario tener un conocimiento bastante bueno de la estructura de la base de datos para poder trabajar con ella.
+                                    Django, con ORM, facilita la comunicación con la base de datos, sin tener que escribir sentencias SQL complejas.
+                                    Los modelos normalmente se encuentran en un archivo llamado models.py.
+                                </p>
+                                <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-md-4 text-center d-flex align-items-center">
+                                <img src="{% static 'images.png' %}" alt="Mi Imagen" class="img-fluid" style="max-width: 100%; height: auto;">
+                            </div>
+
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="row mb-2">
+        <div class="col-md-12">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-              <strong class="d-inline-block mb-2 text-success">Design</strong>
-              <h3 class="mb-0">Post title</h3>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+              <strong class="d-inline-block mb-2 text-success">Etapas</strong>
+              <h3 class="mb-0">¿Qué es Django?</h3>
+              <div class="mb-1 text-muted">Agosto 15</div>
+              <p class="mb-auto">Django es un framework Python que facilita la creación de sitios web utilizando Python.
+
+                Django se encarga de las cosas difíciles para que usted pueda concentrarse en crear sus aplicaciones web.
+                
+                Django enfatiza la reutilización de componentes, también conocida como DRY (Don't Repeat Yourself), y viene con características listas para usar como sistema de inicio de sesión, conexión a base de datos y operaciones CRUD (Crear Leer Actualizar Eliminar).</p>
               <a href="#" class="stretched-link">Continue reading</a>
             </div>
             <div class="col-auto d-none d-lg-block">
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              
     
             </div>
           </div>
         </div>
       </div>
+
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success">Etapas</strong>
+              <h3 class="mb-0">Plantilla</h3>
+              <div class="mb-1 text-muted">Agosto 15</div>
+              <p class="mb-auto"> Una plantilla es un archivo donde se describe cómo debe representarse el resultado.
+
+                Las plantillas suelen ser archivos .html, con código HTML que describe el diseño de una página web, pero también pueden estar en otros formatos de archivo para presentar otros resultados, pero nos concentraremos en los archivos .html.
+                
+                Django usa HTML estándar para describir el diseño, pero usa etiquetas Django para agregar lógica:
+                
+                <h1>My Homepage</h1>
+                
+                <p>My name is {{ firstname }}.</p>
+
+                Las plantillas de una aplicación se encuentran en una carpeta llamada templates.</p>
+              <a href="#" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+
+              <div class="row mb-2">
+                <div class="col-md-12">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      <strong class="d-inline-block mb-2 text-success">Etapas</strong>
+                      <h3 class="mb-0">Entonces, ¿que hacemos?</h3>
+                      <div class="mb-1 text-muted">Agosto 15</div>
+                      <p class="mb-auto">Cuando haya instalado Django y creado su primera aplicación web Django, y el navegador solicite la URL, esto es básicamente lo que sucede:
+
+                        Django recibe la URL, verifica el urls.pyarchivo y llama a la vista que coincide con la URL.
+                        La vista, ubicada en views.py, busca modelos relevantes.
+                        Los modelos se importan desde el models.pyarchivo.
+                        Luego, la vista envía los datos a una plantilla específica en la templatecarpeta.
+                        La plantilla contiene etiquetas HTML y Django, y con los datos devuelve el contenido HTML terminado al navegador.
+                        Django puede hacer mucho más que esto, pero esto es básicamente lo que aprenderás en este tutorial, y son los pasos básicos en una aplicación web simple hecha con Django.
+                        
+
+                        
+                        
+                      <a href="#" class="stretched-link">Continue reading</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+
+                      <div class="row mb-2">
+                        <div class="col-md-12">
+                          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                              <strong class="d-inline-block mb-2 text-success">Etapas</strong>
+                              <h3 class="mb-0">Historia de Django </h3>
+                              <div class="mb-1 text-muted">Agosto 15</div>
+                              <p class="mb-auto">Django fue inventado por Lawrence Journal-World en 2003, para cumplir con los plazos cortos del periódico y al mismo tiempo satisfacer las demandas de los desarrolladores web experimentados.
+
+                                El lanzamiento inicial al público fue en julio de 2005.
+                                
+                                La última versión de Django es 4.0.3 (marzo de 2022).
+                                
+                                </p>
+                              <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
    
 
 {% endblock contenido %}
