@@ -1,0 +1,161 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% block titulo %}  {% endblock titulo %}</title>
+
+<link rel="stylesheet" href="{% static 'css/PlantillaBarraNavegacion.css' %}" >
+<main>
+    <svg viewBox="0 0 700 700">
+      <defs>
+        <g id="circles">
+          <symbol id="dot">
+            <circle cx="30" cy="30" r="30" />
+          </symbol>
+  
+          <!--
+            We need two moving circles in order to pull off this effect:
+            one for the gooey effect and another for the glow. By
+            animating this circle and using it in the two aforementioned
+            scenarios, we guarantee that the two dots we end up using
+            will remain moving in sync. This would not be the case if
+            we assigned our animation to the two dots separately. Note
+            the coordinates that we assign to the circle.
+          -->
+          <symbol id="moving-dot">
+            <circle class="scanner" cx="175" cy="175" r="28" />
+          </symbol>
+        </g>
+  
+        <g id="filters">
+          <!-- Our gooey effect filter. -->
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur"
+                           mode="matrix"
+                           values="1 0 0 0 0
+                                   0 1 0 0 0
+                                   0 0 1 0 0
+                                   0 0 0 19 -9"
+                           result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+  
+          <!--
+            This softens the edges of the moving dot by adding a
+            subtle glowing effect. We increase the height and the
+            width, and adjust the coordinates to avoid clipping.
+            These values are arbitrary, as I didn't want to get
+            super math-y about it.
+          -->
+          <filter id="glow" filterUnits="userSpaceOnUse" x="-20%" y="-20%" height="140%" width="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12" />
+          </filter>
+  
+          <!--
+            A larger, yet more subtle glow effect meant for the
+            second moving circle. Again, the dimension and position
+            attributes are arbitrary but large enough to prevent
+            any clipping.
+          -->
+          <filter id="outer-glow" filterUnits="userSpaceOnUse" x="-50%" y="-50%" height="220%" width="220%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="outer-glow"/>
+          </filter>
+        </g>
+      </defs>
+  
+      <svg aria-labelledby="title"
+           aria-describedby="desc"
+           aria-busy="true"
+           role="progressbar"
+           aria-valuemin="0"
+           aria-valuemax="100">
+        <title id="title">Circular Loader with Gooey Effect</title>
+        <desc id="desc">
+          A soft cyan glowing dot moving in a circular path defined by eight light blue circles, creating a
+          gooey effect as it passes over them.
+        </desc>
+  
+        <!--
+          For the effect to work, the "#goo" filter should be applied
+          to a container, which this <g> is. The moving dot uses the
+          "#glow" filter to replace the hard edges of the dot with a
+          soft glow effect.
+  
+          We derive the location of the eight circles by converting
+          polar to Cartesian coordinates using the following
+          equations:
+  
+          x = r cos ϕ
+          y = r sin ϕ
+  
+          Here, `r` stands for the radius of the circle defining
+          the circular path. This is 150 in our case. `ϕ` is
+          multiples of 45° (360 divided by 8).
+        -->
+        <g class="circles centered">
+          <use class="dot" href="#dot" x="106"  y="106"/>
+          <use class="dot" href="#dot" x="0"    y="150"/>
+          <use class="dot" href="#dot" x="-106" y="106"/>
+          <use class="dot" href="#dot" x="-150" y="0"/>
+          <use class="dot" href="#dot" x="-106" y="-106"/>
+          <use class="dot" href="#dot" x="0"    y="-150"/>
+          <use class="dot" href="#dot" x="106"  y="-106"/>
+          <use class="dot" href="#dot" x="150"  y="0"/>
+          <!-- Position the glowing dot by the topmost center dot. -->
+          <use class="dot--light" href="#moving-dot" x="-150" y="-150" />
+        </g>
+  
+        <!--
+          This extra dot represents the larger and softer glow around
+          the moving dot. We can't include this in the group above
+          because the "#goo" filter renders the "#outer-glow" filter
+          useless. It causes clipping, in addition, due to it missing
+          the filter attributes from "#outer-glow".
+  
+          Note that we need to wrap the dot in a <g> due to having
+          to apply a translation twice: one for centering the dot and
+          another for the animation. If we were to apply the
+          `centered` class to the dot, the value of the translation
+          from the animation would override it, messing up the
+          effect. Alternatively, we could define another `@keyframes`
+          rule but with the appropriate `translateY` value.
+        -->
+        <g class="centered">
+          <use class="dot--glowing" href="#moving-dot" x="-150" y="-150" />
+        </g>
+      </svg>
+    </svg>
+  
+    
+ 
+
+  <div class="wrapper">
+    <div class="main-div main-div1">
+      <h1>PROA</h1>
+    </div>
+    <div class="main-div main-div2">
+      <h1>Cruz Del Eje</h1>
+    </div>
+    <div class="main-div main-div3">
+      <h1>PRogramación </h1>
+    </div>
+  </div>
+  
+
+   
+   
+   
+   
+   
+
+ 
+</body>
+</html>
+   
+   
+
+
+
+</body>
+</html>

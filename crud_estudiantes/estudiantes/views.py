@@ -7,6 +7,8 @@ from django.shortcuts import get_object_or_404, render
 # Create your views here.
 def inicio(request):
     return render(request,'paginas_base/inicio.html')
+def cosa(request):
+    return render(request,'paginas_base/cosa.html')
 def nosotros(request):
     return render(request,'paginas_base/nosotros.html')
 

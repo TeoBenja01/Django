@@ -3,28 +3,328 @@
 {% block titulo %}Página de Inicio{% endblock titulo %}
 
 {% block contenido %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" >
+<body id="page-body">
+
     <!-- Perfil Section -->
-    <div class="row mb-4" >
+    <div class="row mb-4">
         <div class="col-md-4 text-center">
             <img src="{% static 'unnamed.jpg' %}" alt="Perfil" class="rounded-circle img-fluid" style="max-width: 400px;">
         </div>
         <div class="col-md-8">
-            <h2 class="mb-3">Teo Rojas</h2>
-            <p>Hola, soy administrador del sistema de estudiantes con experiencia en la gestión de datos y operaciones CRUD.</p>
-            <p>
-                <a href="https://www.linkedin.com/in/johndoe" class="btn btn-primary">LinkedIn</a>
-                <a href="https://twitter.com/johndoe" class="btn btn-info">Twitter</a>
-            </p>
+            <h2 class="neon-text">Teo Rojas</h2>
+            <p id="text-intro" style="color: #34495e; font-family: 'Courier New', Courier, monospace; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);"></p>
+         
+    </div>
+    <div id="lightbox" class="p-3 mb-4 rounded bg-warning" style="border: 2px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div class="container-fluid text-center" style="padding-top: 0;">
+            <h1 id="text-welcome" class="display-5 fw-bold" style="margin-top: 0; color: #e74c3c; font-family: 'Times New Roman', Times, serif; text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">Programacion</h1>
+            <p id="text-description" class="col-md-8 fs-2" style="color: Blue; font-family: Verdana, Geneva, sans-serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></p>
+            <button id="toggleButton" type="button" onclick="toggleLight()" style="transition: background-color 0.5s, transform 0.2s;">Encender Luz</button>
+        </div>
+    </div>
+    
+
+    <button id="colorButton" onclick="changeBackgroundColor()">Cambiar Color de Fondo</button>
+
+
+    <script>
+        let isLightOn = false;
+    
+        function toggleLight() {
+            const button = document.getElementById('toggleButton');
+            const body = document.body;
+    
+            if (isLightOn) {
+                // Cambiar a modo apagado con animación
+                body.style.transition = 'background-color 1s, color 1s';
+                body.style.backgroundColor = 'black';
+                body.style.color = 'white';
+                button.innerHTML = 'Encender Luz';
+                button.style.backgroundColor = 'gray';
+                button.style.color = 'white';
+                button.style.transform = 'scale(1)';
+            } else {
+                // Cambiar a modo encendido con animación
+                body.style.transition = 'background-color 1s, color 1s';
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+                button.innerHTML = 'Apagar Luz';
+                button.style.backgroundColor = 'yellow';
+                button.style.color = 'black';
+                button.style.transform = 'scale(1.1)';
+            }
+            
+            isLightOn = !isLightOn;  // Cambiar el estado
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleLight();  // Inicializar el botón
+        });
+    </script>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h3 id="text-news" class="mb-3" style="color: #3498db; font-family: Georgia, serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></h3>
+            <ul class="list-group">
+                <li id="news-1" class="list-group-item" style="font-family: Arial, sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"></li>
+                <li id="news-2" class="list-group-item" style="font-family: Arial, sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"></li>
+                <li id="news-3" class="list-group-item" style="font-family: Arial, sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"></li>
+            </ul>
         </div>
     </div>
 
-    <div class="p-3 mb-4 rounded bg-warning" style="border: 2px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
-        <div class="container-fluid text-center" style="padding-top: 0;">
-            <h1 class="display-5 fw-bold" style="margin-top: 0;">Bienvenido al Sistema de Estudiantes</h1>
-            <p class="col-md-8 fs-2" style="color: Blue;">Esto es un Crud de la sección de Estudiantes</p>
-            <button class="btn btn-primary btn-lg" type="button">Listado de Estudiantes</button>
-        </div>
-    </div>
+    <script>
+        function typewriterEffect(elementId, text, speed) {
+            var i = 0;
+            var element = document.getElementById(elementId);
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+   
+      
+        
+    </script>
+<script> 
+    document.addEventListener('DOMContentLoaded', function() {
+        typewriterEffect('text-intro', 'Hola, soy administrador del sistema de estudiantes con experiencia en la gestión de datos y operaciones CRUD.', 50);
+        typewriterEffect('text-linkedin', 'LinkedIn', 50);
+        typewriterEffect('text-twitter', 'Twitter', 50);
+    });
     
+    function toggleLight() {
+        const button = document.getElementById('toggleButton');
+        const body = document.getElementById('page-body');
     
+        if (isLightOn) {
+            body.style.backgroundColor = 'black';
+            body.style.color = 'white';
+            button.innerHTML = 'Encender Luz';
+            button.style.backgroundColor = 'gray';
+            button.style.color = 'white';
+            button.style.transform = 'scale(1)';
+        } else {
+            body.style.backgroundColor = 'white';
+            body.style.color = 'black';
+            button.innerHTML = 'Apagar Luz';
+            button.style.backgroundColor = 'yellow';
+            button.style.color = 'black';
+            button.style.transform = 'scale(1.1)';
+        }
+        
+        isLightOn = !isLightOn;  // Cambiar el estado
+    }
+    
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    
+    function changeBackgroundColor() {
+        const body = document.getElementById('page-body');
+        const newColor = getRandomColor();
+        body.style.backgroundColor = newColor;
+        console.log(`Color de fondo cambiado a: ${newColor}`);
+    }
+</script>
+<script>
+    function animateText(elementId) {
+        const element = document.getElementById(elementId);
+        element.style.transition = 'color 2s, transform 1s';
+        element.style.color = getRandomColor();
+        element.style.transform = 'scale(1.1)';
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        animateText('text-welcome'); // Aplica la animación al texto del encabezado
+    });
+    
+    window.onscroll = function() {
+        const scrollButton = document.getElementById('scrollButton');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = "block";
+        } else {
+            scrollButton.style.display = "none";
+        }
+    };
+    
+    function scrollToTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    
+    // Añadir el botón en el HTML
+    // <button id="scrollButton" onclick="scrollToTop()" style="display:none;position:fixed;bottom:20px;right:30px;z-index:99;border:none;background-color:#000;color:white;padding:10px 15px;border-radius:5px;">↑</button>
+
+    function showTooltip(event, text) {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.innerText = text;
+        tooltip.style.position = 'absolute';
+        tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        tooltip.style.color = '#fff';
+        tooltip.style.padding = '5px';
+        tooltip.style.borderRadius = '4px';
+        tooltip.style.top = `${event.clientY + 10}px`;
+        tooltip.style.left = `${event.clientX + 10}px`;
+        document.body.appendChild(tooltip);
+    }
+    
+    function hideTooltip() {
+        const tooltip = document.querySelector('.tooltip');
+        if (tooltip) tooltip.remove();
+    }
+    
+    document.getElementById('text-linkedin').addEventListener('mouseover', function(event) {
+        showTooltip(event, 'Visítame en LinkedIn');
+    });
+    document.getElementById('text-linkedin').addEventListener('mouseout', hideTooltip);
+
+    
+    function openLightbox(imageSrc) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.style.position = 'fixed';
+        lightbox.style.top = '0';
+        lightbox.style.left = '0';
+        lightbox.style.width = '100%';
+        lightbox.style.height = '100%';
+        lightbox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        lightbox.style.display = 'flex';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.cursor = 'pointer';
+        lightbox.onclick = function() { lightbox.remove(); };
+        
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.style.maxWidth = '90%';
+        img.style.maxHeight = '90%';
+        lightbox.appendChild(img);
+        
+        document.body.appendChild(lightbox);
+    }
+    
+    document.querySelectorAll('.card-img-top').forEach(function(image) {
+        image.onclick = function() {
+            openLightbox(this.src);
+        };
+    });
+    
+    function openLightbox(imageSrc) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.style.position = 'fixed';
+        lightbox.style.top = '0';
+        lightbox.style.left = '0';
+        lightbox.style.width = '100%';
+        lightbox.style.height = '100%';
+        lightbox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        lightbox.style.display = 'flex';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.cursor = 'pointer';
+        lightbox.onclick = function() { lightbox.remove(); };
+        
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.style.maxWidth = '90%';
+        img.style.maxHeight = '90%';
+        lightbox.appendChild(img);
+        
+        document.body.appendChild(lightbox);
+    }
+    
+    document.querySelectorAll('.card-img-top').forEach(function(image) {
+        image.onclick = function() {
+            openLightbox(this.src);
+        };
+    });
+</script>
+
+
+<div id="notification" class="notification"></div>
+
+<script>
+    function showNotification(message) {
+        const notification = document.getElementById('notification');
+        notification.innerText = message;
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000); // Notificación visible por 3 segundos
+    }
+    
+    // Ejemplo de uso
+    document.addEventListener('DOMContentLoaded', function() {
+        showNotification('¡Bienvenido a la página!');
+    });
+</script>
+
+
+<div id="loader" class="loader"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.getElementById('loader');
+        
+        window.addEventListener('load', function() {
+            loader.style.display = 'none'; // Oculta el loader cuando la página está completamente cargada
+        });
+    });
+</script>
+
+
+
+<div id="progressBar"></div>
+
+<script>
+    window.addEventListener('load', function() {
+        const progressBar = document.getElementById('progressBar');
+        let width = 0;
+
+        function updateProgress() {
+            if (width >= 100) {
+                clearInterval(interval);
+            } else {
+                width++;
+                progressBar.style.width = width + '%';
+            }
+        }
+
+        const interval = setInterval(updateProgress, 10); // Ajusta la velocidad según sea necesario
+    });
+</script>
+
+<form id="calculator">
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    <button type="button" onclick="calculate()">Calcular</button>
+    <p id="result">Resultado: </p>
+</form>
+
+<script>
+    function calculate() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const result = num1 * num2; // Realiza la operación deseada
+        document.getElementById('result').textContent = `Resultado: ${result}`;
+    }
+</script>
+
+
+
 {% endblock contenido %}
+
+</body>

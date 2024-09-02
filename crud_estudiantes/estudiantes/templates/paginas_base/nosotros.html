@@ -2,7 +2,10 @@
 {% load static %}
 {% block titulo %}Página Nosotros {% endblock titulo %}
 {% block contenido %}
-<div class="p-4 p-md-7 mb-4 text-white rounded bg-primary">
+<link rel="stylesheet" href="{% static 'css/estilo.css' %}" >
+<script src="{% static 'JAVASCRIPT/particles.js' %}"></script>
+
+<div class="animated-background" "p-4 p-md-7 mb-4 text-white rounded bg-primary ">
   <div class="d-flex align-items-center">
       <div class="col-md-6 px-0">
           <h1 class="display-2" style="color:Yellow">Programación con Django</h1>
@@ -10,10 +13,22 @@
           <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
       </div>
       <div class="ms-4">
+        
           <img src="{% static 'img9.jpeg' %}" alt="Mi Imagen" width="350px">
       </div>
   </div>
 </div>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
 
     <div class="text-center">
       <img src="{% static 'images21.png' %}" style="float-end" alt="Mi Imagen" width="500px">
@@ -30,7 +45,7 @@
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="border: 2px solid #000; padding: 10px;">
                 <div class="col-md-8 p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary">Formas</strong>
-                    <h3 class="mb-0" style="font-family: Arial;">Tutorial de Django</h3>
+                    <h3 class="text-shadow">Tutorial de Django</h3>
                     <div class="mb-1 text-muted">Agosto 18</div>
                     <p class="card-text mb-auto">En este tutorial, obtendrás una guía paso a paso sobre cómo instalar y crear un proyecto de Django. Aprenderás a crear un proyecto en el que puedas agregar, leer, actualizar o eliminar datos.</p>
                     <a href="#" class="stretched-link">Continue reading</a>
@@ -42,14 +57,15 @@
         </div>
     </div>
     
-    
+   
+
     
             <div class="row mb-2">
               <div class="col-md-12">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                   <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Formas</strong>
-                    <h3 class="mb-0" "font-family:Arial">¿Cómo funciona Django?</h3>
+                    <strong class="d-inline-block mb-2 text-primary" >Formas</strong>
+                    <h3 class= "text-shadow">¿Cómo funciona Django?</h3>
                     <div class="mb-1 text-muted">Agosto 12</div>
                     <p class="card-text mb-auto">Django sigue el patrón de diseño MVT (Modelo Vista Plantilla).
 
@@ -65,7 +81,7 @@
                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col-md-8 p-4 d-flex flex-column position-static">
                                 <strong class="d-inline-block mb-2 text-primary">Formas</strong>
-                                <h3 class="mb-0" style="font-family:Arial;">Modelo</h3>
+                                <h3 class="text-shadow">Modelo</h3>
                                 <div class="mb-1 text-muted">Nov 12</div>
                                 <p class="card-text mb-auto">
                                     El modelo proporciona datos de la base de datos. En Django, los datos se entregan como un Mapeo Relacional de Objetos (ORM), que es una técnica diseñada para facilitar el trabajo con bases de datos.

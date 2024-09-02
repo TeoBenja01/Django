@@ -15,7 +15,55 @@
             
         </div>
     </div>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const inputs = form.querySelectorAll('input, select, textarea');
+        
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    if (input.value.trim() === '') {
+                        input.classList.add('is-invalid');
+                        input.nextElementSibling.textContent = `${input.placeholder} es obligatorio.`;
+                    } else {
+                        input.classList.remove('is-invalid');
+                        input.nextElementSibling.textContent = '';
+                    }
+                });
+            });
+        
+            form.addEventListener('submit', (event) => {
+                let valid = true;
+                inputs.forEach(input => {
+                    if (input.value.trim() === '') {
+                        input.classList.add('is-invalid');
+                        valid = false;
+                    }
+                });
+                if (!valid) event.preventDefault(); // Prevenir el envío del formulario si no es válido
+            });
+        });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const addButton = document.getElementById('addPhoto');
+                const form = document.querySelector('form');
+            
+                addButton.addEventListener('click', () => {
+                    const newField = document.createElement('div');
+                    newField.className = 'mb-3';
+                    newField.innerHTML = `
+                        <label for="newPhoto" class="form-label">Foto Adicional</label>
+                        <input type="file" class="form-control" name="additional_photos[]" />
+                    `;
+                    form.appendChild(newField);
+                });
+            });
+            </script>
+            
+            <button type="button" id="addPhoto" class="btn btn-secondary">Agregar Foto Adicional</button>
+            
    
    
 

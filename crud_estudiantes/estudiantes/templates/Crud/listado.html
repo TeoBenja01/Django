@@ -2,6 +2,7 @@
 <body bgcolor="black">
 {% block titulo %}Página Lista de Estudiante {% endblock titulo %}
 {% block contenido %}
+<link rel="stylesheet" href="css/style.css" >
     <div class="card">
         <div class="card-header">
             <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear' %}" role="button">Nuevo estudiante</a>
@@ -73,6 +74,119 @@
         </div>
     </div>
    
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headers = document.querySelectorAll('.table th');
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const table = header.parentElement.parentElement.parentElement;
+                    const rows = Array.from(table.querySelectorAll('tbody tr'));
+                    const index = Array.from(header.parentElement.children).indexOf(header);
+                    const isAscending = header.classList.contains('asc');
+    
+                    rows.sort((a, b) => {
+                        const aText = a.children[index].textContent.trim();
+                        const bText = b.children[index].textContent.trim();
+                        return isAscending 
+                            ? aText.localeCompare(bText) 
+                            : bText.localeCompare(aText);
+                    });
+    
+                    table.querySelector('tbody').append(...rows);
+    
+                    header.classList.toggle('asc', !isAscending);
+                    header.classList.toggle('desc', isAscending);
+                });
+            });
+        });
+    </script>
+    
+    <button onclick="toggleMode()">Cambiar Modo</button>
 
+    <script>
+        let darkMode = false;
+    
+        function toggleMode() {
+            const body = document.body;
+            darkMode = !darkMode;
+            body.style.backgroundColor = darkMode ? '#333' : '#fff';
+            body.style.color = darkMode ? '#fff' : '#000';
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.style.backgroundColor = darkMode ? '#555' : '#007bff';
+                btn.style.color = darkMode ? '#fff' : '#fff';
+            });
+        }
+    </script>
+   
+
+    <button onclick="downloadPDF()">Descargar PDF</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+    
+            // Seleccionar la tabla y preparar el contenido
+            const rows = Array.from(document.querySelectorAll('.table tr'));
+            let y = 10;
+            rows.forEach((row, rowIndex) => {
+                const cells = Array.from(row.querySelectorAll('td, th'));
+                let x = 10;
+                cells.forEach((cell, cellIndex) => {
+                    doc.text(cell.textContent, x, y);
+                    x += 40; // Ajusta el espaciado horizontal según sea necesario
+                });
+                y += 10; // Ajusta el espaciado vertical según sea necesario
+    
+                // Añadir una nueva página si la fila se sale del límite de la página
+                if (y > 280) {
+                    doc.addPage();
+                    y = 10;
+                }
+            });
+    
+            doc.save('datos.pdf');
+        }
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('.table tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                rows.forEach(r => r.classList.remove('highlight'));
+                row.classList.add('highlight');
+            });
+        });
+    });
+</script>
+
+<input type="text" id="searchInput" placeholder="Buscar...">
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll('.table tbody tr');
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchTerm));
+        row.style.display = match ? '' : 'none';
+    });
+});
+</script>
+
+<button onclick="copyTableData()">Copiar al Portapapeles</button>
+
+<script>
+function copyTableData() {
+    const rows = Array.from(document.querySelectorAll('.table tr'));
+    const text = rows.map(row => {
+        const cells = Array.from(row.querySelectorAll('td, th'));
+        return cells.map(cell => cell.textContent).join('\t');
+    }).join('\n');
+    
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Datos copiados al portapapeles!');
+    });
+}
+</script>
 {% endblock contenido %}
